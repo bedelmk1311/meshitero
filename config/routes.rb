@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "homes#top"
+  root to: 'homes#top'
   devise_for :users
   #deviseのUserモデルを追加した時に自動的に追加される
 
@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   resources :post_images
 
   #''と""
-  get "/homes/about" => "homes#about", as: "about"
+  get '/homes/about' => 'homes#about', as: 'about'
 
 end
