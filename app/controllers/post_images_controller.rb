@@ -22,7 +22,15 @@ class PostImagesController < ApplicationController
   def edit
   end
 
-    private
+  def destroy
+    #削除するPostImageレコードを取得
+    post_image = PostImage.find(params[:id])
+    post_image.destroy
+    redirect_to post_images_path
+  end
+
+
+  private
     #require必要とする　データはデータでも許可されたデータか判断する関所
     def post_image_params
       params.require(:post_image).permit(:shop_name, :image, :caption)
