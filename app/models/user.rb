@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :post_images, dependent: :destroy
+  #投稿そのもの
+  has_many :post_comments, dependent: :destroy
+  #Userのデータが削除されたとき、そのUserが投稿したコメントも一緒に削除
   #アソシエーション1:Nの1側にhas_manyを記載
 
   has_one_attached :profile_image

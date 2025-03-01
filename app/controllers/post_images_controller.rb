@@ -17,6 +17,8 @@ class PostImagesController < ApplicationController
   def show
     #特定のidのPostImageモデルを格納させる
     @post_image = PostImage.find(params[:id])
+    @post_comment = PostComment.new
+    #コメントを投稿するためのインスタンス変数を定義する（空箱を用意する）
   end
 
   def edit

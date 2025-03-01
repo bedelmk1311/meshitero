@@ -5,6 +5,8 @@ class PostImage < ApplicationRecord
 
   belongs_to :user
   #  #アソシエーション1:NのN側にbelong_toを記載
+  has_many :post_comments, dependent: :destroy
+  #投稿そのもののデータが削除されたとき、コメントも一緒に削除
 
   def get_image
     unless image.attached?
