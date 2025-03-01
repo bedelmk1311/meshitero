@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   #ルーティングを一括して自動生成
   resources :post_images
+  #get 'users/show'
+  #get 'users/edit'
+  resources :users
 
   #''と""
   get '/homes/about' => 'homes#about', as: 'about'
