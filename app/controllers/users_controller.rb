@@ -5,7 +5,26 @@ class UsersController < ApplicationController
     @post_images = @user.post_images
     #@userの投稿全て(post_images)を取得する
   end
-
-  def edit
+  
+  def edit 
+    @user = User.find(params[:id])
+    #URLを参考に特定のidを持ったレコードを取得
   end
+  
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    #引数を指定しないとargumentエラー
+
+    redirect_to user_path(current_user.id)
+  
+  end
+
+  private
+
+  def user_params
+    #require必要とする　データはデータでも許可されたデータか判断する関所
+    params.require(:user).permit(:name, :profile_image)
+  end
+
 end
