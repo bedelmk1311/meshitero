@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   #ルーティングを一括して自動生成
   resources :post_images, only: [:new, :create, :index, :show, :destroy] do
-    resources :post_comments, only: [:create]
+    resources :post_comments, only: [:create, :destroy]
   end
   #親子関係をネストするという
 
