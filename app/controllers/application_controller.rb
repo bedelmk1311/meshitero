@@ -1,4 +1,9 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!, except: [:top]
+  #権限の設定　deviseのメソッド　コントローラー内基本一番上
+  #ログイン認証が成功していないと、トップページ以外の画面（ログインと新規登録は除く）は表示できない仕様
+  #authenticate オーセンティケート　認証
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
   #deviseの機能が使われる前に、configure_permitted_parametersをする
 
