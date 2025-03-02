@@ -7,6 +7,8 @@ class PostImage < ApplicationRecord
   #  #アソシエーション1:NのN側にbelong_toを記載
   has_many :post_comments, dependent: :destroy
   #投稿そのもののデータが削除されたとき、コメントも一緒に削除
+  has_many :favorites, dependent: :destroy
+  #投稿そのもののデータが削除されたとき、favoriteも一緒に削除
 
   def get_image
     unless image.attached?
@@ -17,4 +19,10 @@ class PostImage < ApplicationRecord
   end
   # get_imageメソッド
   # unless もし〜でない限りは
+
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
+  #favorited_by?メソッド
+  #exists 存在する
 end
